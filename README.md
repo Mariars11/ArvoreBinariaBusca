@@ -13,7 +13,7 @@
 > };
 
 ## Operações
-* Inserção
+* Inserção :white_check_mark:
 * Remoção
 * Busca
 * Percurso na arvore
