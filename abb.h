@@ -4,8 +4,13 @@ typedef struct TreeNode {
     struct TreeNode* right; // Ponteiro para o filho direito
 } TreeNode;
 
-void InserirNode(TreeNode **t, int key);
-void ImprimirArvore(TreeNode **root);
-int MaiorValor(TreeNode **root, int maiorValor);
-int MenorValor(TreeNode **root, int menorValor);
+TreeNode* MenorValorDireita(TreeNode *root);
+TreeNode* CriarNoRaiz(int x);
+int MenorValor(TreeNode *root, int menorValor);
+int MaiorValor(TreeNode *root, int maiorValor);
+TreeNode* Insert(TreeNode *root, int x);
+TreeNode* Delete(TreeNode *root, int x);
+void inorder(TreeNode *root);
+int Busca(TreeNode *root, int x);
+
 

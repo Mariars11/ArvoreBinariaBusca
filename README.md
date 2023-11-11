@@ -14,7 +14,7 @@
 
 ## Operações
 * Inserção :white_check_mark:
-* Remoção
-* Busca
+* Remoção :white_check_mark:
+* Busca :white_check_mark:
 * Percurso na arvore
 * Minimo e maximo :white_check_mark:

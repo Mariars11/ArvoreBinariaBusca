@@ -2,53 +2,125 @@
 #include <stdlib.h>
 #include "abb.h"
 
-void ImprimirArvore(TreeNode **root){
-        if((*root)->left != NULL){
-            printf("\n%d", (*root)->left->key);
-            ImprimirArvore(&(*root)->left);
-        }
-        if((*root)->right != NULL){
-            printf("\t%d", (*root)->right->key);
-            ImprimirArvore(&(*root)->right);
-        }
+int Busca(TreeNode *root, int x)
+{
+    if(root->right == NULL && root->left == NULL){
+         return 0;
+    }
+    else if(root->key == x) 
+    {
+         return 1;
+    }
+    else if(x > root->key)
+    {
+        return Busca(root->right, x);
+    }  
+    else if(x < root->key)
+    {
+        return Busca(root->left,x);
+    } 
 }
-
-int MaiorValor(TreeNode **root, int maiorValor){
-    if((*root)->right != NULL){
-        if(maiorValor < (*root)->right->key){
-           return MaiorValor(&((*root)->right), (*root)->right->key);
+int MaiorValor(TreeNode *root, int maiorValor){
+    if(root->right != NULL){
+        if(maiorValor < root->right->key){
+           return MaiorValor(root->right, root->right->key);
         }
     }
     return maiorValor;
 }
-int MenorValor(TreeNode **root, int menorValor){
-    if((*root)->left != NULL){
-        if(menorValor > (*root)->left->key){
-           return MenorValor(&((*root)->left), (*root)->left->key);
+int MenorValor(TreeNode *root, int menorValor){
+    if(root->left != NULL){
+        if(menorValor > root->left->key){
+           return MenorValor(root->left, root->left->key);
         }
     }
     return menorValor;
 }
-//O valor maior é inserido a direita, e o menor a esquerda
-void InserirNode(TreeNode **root, int key)
+//function to find the minimum value in a node
+TreeNode* MenorValorDireita(TreeNode *root)
 {
-    if((*root) == NULL)
-    {
-        *root = (struct TreeNode*) malloc(sizeof(TreeNode));
-        (*root)->key = key;
-        (*root)->left = NULL;
-        (*root)->right = NULL;
-    }
-    else
-    {
-        if(key < (*root)->key)
-        {
-            InserirNode(&((*root)->left), key);
-        }
-        else
-        {
-            InserirNode(&((*root)->right), key);
-        }
-    }
+    if(root == NULL)
+        return NULL;
+    else if(root->left != NULL) // node with minimum value will have no left child
+        return MenorValorDireita(root->left); // left most element will be minimum
+    return root;
 }
 
+//function to create a node
+TreeNode* CriarNoRaiz(int key)
+{
+    TreeNode *t;
+    t = malloc(sizeof(TreeNode));
+    t->key = key;
+    t->left = NULL;
+    t->right = NULL;
+
+    return t;
+}
+
+TreeNode* Insert(TreeNode *root, int x)
+{
+    if(root == NULL){
+         return CriarNoRaiz(x);
+    }
+    else if(x > root->key) {
+         root->right = Insert(root->right, x);
+    }   
+    else{
+         root->left = Insert(root->left,x);
+    } 
+       
+    return root;
+}
+
+TreeNode* Delete(TreeNode *root, int x)
+{
+    if(root==NULL){
+        return NULL;
+    } 
+    if (x > root->key){
+        root->right = Delete(root->right, x);
+    }
+    else if(x<root->key){
+        root->left = Delete(root->left, x);
+    }  
+    else
+    {
+        //Sem filhos
+        if(root->left==NULL && root->right==NULL)
+        {
+            free(root);
+            return NULL;
+        }
+        //Um filho
+        else if(root->left==NULL || root->right==NULL)
+        {
+            TreeNode *temp;
+            if(root->left==NULL)
+                temp = root->right;
+            else
+                temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        //Dois filhos
+        else
+        {
+            TreeNode *temp = MenorValorDireita(root->right);
+            root->key = temp->key;
+            root->right = Delete(root->right, temp->key);
+        }
+    }
+    return root;
+}
+
+void inorder(TreeNode *root)
+{
+    if(root!=NULL) // checking if the root is not null
+    {
+        inorder(root->left); // visiting left child
+        printf(" %d ", root->key); // printing key at root
+        inorder(root->right);// visiting right child
+    }
+}
