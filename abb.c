@@ -12,6 +12,23 @@ void ImprimirArvore(TreeNode **root){
             ImprimirArvore(&(*root)->right);
         }
 }
+
+int MaiorValor(TreeNode **root, int maiorValor){
+    if((*root)->right != NULL){
+        if(maiorValor < (*root)->right->key){
+           return MaiorValor(&((*root)->right), (*root)->right->key);
+        }
+    }
+    return maiorValor;
+}
+int MenorValor(TreeNode **root, int menorValor){
+    if((*root)->left != NULL){
+        if(menorValor > (*root)->left->key){
+           return MenorValor(&((*root)->left), (*root)->left->key);
+        }
+    }
+    return menorValor;
+}
 //O valor maior é inserido a direita, e o menor a esquerda
 void InserirNode(TreeNode **root, int key)
 {

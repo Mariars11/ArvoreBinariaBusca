@@ -6,4 +6,6 @@ typedef struct TreeNode {
 
 void InserirNode(TreeNode **t, int key);
 void ImprimirArvore(TreeNode **root);
+int MaiorValor(TreeNode **root, int maiorValor);
+int MenorValor(TreeNode **root, int menorValor);
 
