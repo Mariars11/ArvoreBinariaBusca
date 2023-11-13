@@ -30,6 +30,13 @@ int main(int argc, char *argv[]){
              
     */
     root = Delete(root, 1);
+    printf("\nPre ordem:\n");
+    PreOrder(root);
+    printf("\nEm ordem simetrica:\n");
+    InOrder(root);
+    printf("\nPos ordem:\n");
+    PostOrder(root);
+   
     /*
                    20
                   /  \

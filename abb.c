@@ -125,7 +125,7 @@ TreeNode* Delete(TreeNode *root, int key)
     }
     return root;
 }
-
+//esquerda, nó, direita
 void InOrder(TreeNode *root)
 {
     if(root!=NULL) 
