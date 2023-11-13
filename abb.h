@@ -10,7 +10,9 @@ int MenorValor(TreeNode *root, int menorValor);
 int MaiorValor(TreeNode *root, int maiorValor);
 TreeNode* Insert(TreeNode *root, int x);
 TreeNode* Delete(TreeNode *root, int x);
-void inorder(TreeNode *root);
+void InOrder(TreeNode *root);
 int Busca(TreeNode *root, int x);
+void PostOrder(TreeNode *root);
+void PreOrder(TreeNode *root);
 
 

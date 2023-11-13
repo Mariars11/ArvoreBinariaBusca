@@ -58,31 +58,31 @@ TreeNode* CriarNoRaiz(int key)
     return t;
 }
 
-TreeNode* Insert(TreeNode *root, int x)
+TreeNode* Insert(TreeNode *root, int  key)
 {
     if(root == NULL){
-         return CriarNoRaiz(x);
+         return CriarNoRaiz(key);
     }
-    else if(x > root->key) {
-         root->right = Insert(root->right, x);
+    else if(key > root->key) {
+         root->right = Insert(root->right, key);
     }   
     else{
-         root->left = Insert(root->left,x);
+         root->left = Insert(root->left, key);
     } 
        
     return root;
 }
 
-TreeNode* Delete(TreeNode *root, int x)
+TreeNode* Delete(TreeNode *root, int key)
 {
     if(root==NULL){
         return NULL;
     } 
-    if (x > root->key){
-        root->right = Delete(root->right, x);
+    if (key > root->key){
+        root->right = Delete(root->right, key);
     }
-    else if(x<root->key){
-        root->left = Delete(root->left, x);
+    else if(key<root->key){
+        root->left = Delete(root->left, key);
     }  
     else
     {
@@ -115,12 +115,31 @@ TreeNode* Delete(TreeNode *root, int x)
     return root;
 }
 
-void inorder(TreeNode *root)
+void InOrder(TreeNode *root)
 {
-    if(root!=NULL) // checking if the root is not null
+    if(root!=NULL) 
     {
-        inorder(root->left); // visiting left child
-        printf(" %d ", root->key); // printing key at root
-        inorder(root->right);// visiting right child
+        InOrder(root->left); 
+        printf(" %d ", root->key); 
+        InOrder(root->right);
     }
+}
+
+void PreOrder(TreeNode *root)
+{
+    if(root != NULL){
+        printf(" %d ", root->key);
+        PreOrder(root->left);
+        PreOrder(root->right);
+    }
+    
+}
+
+void PostOrder(TreeNode *root)
+{
+    if(root != NULL){
+        PostOrder(root->left);
+        PostOrder(root->right);
+        printf(" %d ", root->key);
+    } 
 }
