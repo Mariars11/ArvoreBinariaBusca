@@ -72,7 +72,18 @@ TreeNode* Insert(TreeNode *root, int  key)
        
     return root;
 }
-
+TreeNode* LimparNos(TreeNode *root)
+{
+    if(root==NULL){
+        return NULL;
+    }  
+    else
+    {
+        free(root);
+        return NULL;    
+    }
+    return root;
+}
 TreeNode* Delete(TreeNode *root, int key)
 {
     if(root==NULL){

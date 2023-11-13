@@ -14,5 +14,6 @@ void InOrder(TreeNode *root);
 int Busca(TreeNode *root, int x);
 void PostOrder(TreeNode *root);
 void PreOrder(TreeNode *root);
+TreeNode* LimparNos(TreeNode *root);
 
 

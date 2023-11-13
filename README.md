@@ -16,5 +16,5 @@
 * Inserção :white_check_mark:
 * Remoção :white_check_mark:
 * Busca :white_check_mark:
-* Percurso na arvore
+* Percurso na arvore :white_check_mark:
 * Minimo e maximo :white_check_mark:

@@ -61,6 +61,6 @@ int main(int argc, char *argv[]){
     printf("\nMenor Valor: %d", MenorValor(root, root->key));
     printf("\nExiste 2 na arvore? %d\n", Busca(root, 2));
     printf("\nExiste 40 na arvore? %d\n", Busca(root, 40));
-
+    LimparNos(root);
     return 0;
 }
