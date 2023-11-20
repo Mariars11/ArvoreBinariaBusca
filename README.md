@@ -6,10 +6,10 @@
 
 ## Estrutura do nó 
 
-> struct TreeNode {
->    int key;                // Valor do nó
->    struct TreeNode* left;  // Ponteiro para o filho esquerdo
->    struct TreeNode* right; // Ponteiro para o filho direito
+> struct TreeNode { <br>
+>    int key;          <br>      
+>    struct TreeNode* left; <br>  
+>    struct TreeNode* right; <br>
 > };
 
 ## Operações

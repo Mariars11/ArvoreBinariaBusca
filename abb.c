@@ -36,17 +36,17 @@ int MenorValor(TreeNode *root, int menorValor){
     }
     return menorValor;
 }
-//function to find the minimum value in a node
+
 TreeNode* MenorValorDireita(TreeNode *root)
 {
     if(root == NULL)
         return NULL;
-    else if(root->left != NULL) // node with minimum value will have no left child
-        return MenorValorDireita(root->left); // left most element will be minimum
+    else if(root->left != NULL) 
+        return MenorValorDireita(root->left); 
     return root;
 }
 
-//function to create a node
+
 TreeNode* CriarNoRaiz(int key)
 {
     TreeNode *t;
@@ -61,13 +61,13 @@ TreeNode* CriarNoRaiz(int key)
 TreeNode* Insert(TreeNode *root, int  key)
 {
     if(root == NULL){
-         return CriarNoRaiz(key);
+        return CriarNoRaiz(key);
     }
     else if(key > root->key) {
-         root->right = Insert(root->right, key);
+        root->right = Insert(root->right, key);
     }   
     else{
-         root->left = Insert(root->left, key);
+        root->left = Insert(root->left, key);
     } 
        
     return root;
@@ -135,7 +135,7 @@ void InOrder(TreeNode *root)
         InOrder(root->right);
     }
 }
-
+//no, esquerda, direita
 void PreOrder(TreeNode *root)
 {
     if(root != NULL){
@@ -145,7 +145,7 @@ void PreOrder(TreeNode *root)
     }
     
 }
-
+//esquerda, direita, no
 void PostOrder(TreeNode *root)
 {
     if(root != NULL){
